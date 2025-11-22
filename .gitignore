@@ -1,0 +1,39 @@
+# .gitignore
+"""
+# Environment
+.env
+venv/
+env/
+.venv/
+
+# Data
+data/raw/*.pdf
+data/processed/
+data/results/
+data/logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Cache
+.cache/
+*.cache
+"""
