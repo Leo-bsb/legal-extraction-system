@@ -1,3 +1,12 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue" />
+  <img src="https://img.shields.io/badge/Streamlit-App-red" />
+  <img src="https://img.shields.io/badge/Gemini-2.5_Flash-blue" />
+</p>
+
+
+
 ## 📄 Legal Document Information Extraction System (LLM + Streamlit + RAG)
 
 A full-stack, production-oriented **legal information extraction platform** built with **Streamlit**, a modular backend for PDF processing, and **Gemini 2.5 Flash** for LLM-based extraction.
