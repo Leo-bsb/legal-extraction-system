@@ -8,6 +8,11 @@
 
 ## 📄 Legal Document Text Extraction System (LLM + Streamlit + PDF Processing)
 
+**Try the live demo:** [https://huggingface.co/spaces/leo-bsb/legal-extraction-system](https://huggingface.co/spaces/leo-bsb/legal-extraction-system)
+
+> ⚠️ **Note:** This app interface is currently available in Brazilian Portuguese only.
+
+
 A full-stack, production-ready **legal document text extraction platform** built with **Streamlit**, a modular backend for robust PDF processing, and **Gemini 2.5 Flash** for LLM-enhanced structured data extraction.
 The system supports **single-document and batch PDF text extraction**, **dashboard visualization**, and **SQLite-based storage**, all wrapped in a clean, user-friendly interface designed for practical use.
 
