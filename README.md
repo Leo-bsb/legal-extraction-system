@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   <img src="https://img.shields.io/badge/Python-3.10%2B-blue" />
@@ -5,91 +6,86 @@
   <img src="https://img.shields.io/badge/Gemini-2.5_Flash-blue" />
 </p>
 
+## 📄 Legal Document Text Extraction System (LLM + Streamlit + PDF Processing)
 
-
-## 📄 Legal Document Information Extraction System (LLM + Streamlit + RAG)
-
-A full-stack, production-oriented **legal information extraction platform** built with **Streamlit**, a modular backend for PDF processing, and **Gemini 2.5 Flash** for LLM-based extraction.
-The system supports **single-document extraction**, **batch processing**, **dashboard visualization**, and **SQLite persistence** — with a clean UI suitable for real-world use.
+A full-stack, production-ready **legal document text extraction platform** built with **Streamlit**, a modular backend for robust PDF processing, and **Gemini 2.5 Flash** for LLM-enhanced structured data extraction.
+The system supports **single-document and batch PDF text extraction**, **dashboard visualization**, and **SQLite-based storage**, all wrapped in a clean, user-friendly interface designed for practical use.
 
 ---
 
 ## 🚀 Key Features
 
-### 🔍 **1. Single Document Extraction**
+### 🔍 **1. Single Document Text Extraction**
 
-* Upload a PDF (up to 200MB).
-* Extract structured information using:
+* Upload PDF files (up to 200MB).
+* Extract text and structured information using:
 
-  * Text parsing
-  * OCR fallback
-  * Metadata cleanup
-  * Gemini 2.5 Flash reasoning model
-* Validate, preview and download results.
+  * Advanced PDF text parsing
+  * OCR fallback for scanned or image-based PDFs
+  * Metadata cleanup and normalization
+  * Gemini 2.5 Flash reasoning and data extraction
+* Preview, validate, and download extracted data.
 
-### 📦 **2. Batch Processing**
+### 📦 **2. Batch PDF Processing**
 
-* Upload multiple PDFs.
-* Parallel processing with status display.
-* Download batch results as JSON or CSV.
+* Upload multiple PDFs simultaneously.
+* Parallel extraction with real-time status updates.
+* Download consolidated extraction results in JSON or CSV formats.
 
-### 📊 **3. Dashboard**
+### 📊 **3. Extraction History Dashboard**
 
-* Visualize previous extractions.
-* Filter by date, type and extracted entities.
-* Monitor processing history and trends.
+* Visualize and filter past extractions by date, document type, and extracted entities.
+* Monitor extraction accuracy and processing trends over time.
 
-### 🗄️ **4. Database Integration**
+### 🗄️ **4. Persistent Storage**
 
-* SQLite storage for:
+* SQLite database for storing:
 
   * Document metadata
-  * Extracted fields
-  * Processing timestamps and errors
-* Automatic ID generation and indexing.
+  * Extracted text and structured fields
+  * Processing timestamps and error logs
+* Automatic indexing for efficient queries and dashboard updates.
 
 ### 🎨 **5. Professional Streamlit UI**
 
-* Custom CSS (dark/light hybrid).
-* Responsive layout.
-* Progress feedback and error handling.
-* Modular page architecture.
+* Custom dark/light hybrid CSS theme.
+* Responsive, intuitive layout with progress feedback.
+* Modular page design for maintainability and extensibility.
 
 ---
 
 ## 🧠 Architecture Overview
 
 ```
-streamlit_app.py         # Main UI / routing
+streamlit_app.py         # Main UI and routing
 │
-├── data_validator/      # Schema validation & cleaning
-├── dashboard/           # Charts, summaries, historical analytics
-├── db/                  # SQLite connection + CRUD
-├── interfaces/          # DTOs, standard structures
-├── llm_engine/          # Gemini 2.5 Flash integration + prompting
-├── pdf_processor/       # Text extraction, OCR, heuristics
-└── utils/               # Logging, file ops, helpers
+├── pdf_processor/       # PDF text extraction and OCR pipeline
+├── llm_engine/          # Gemini 2.5 Flash integration and prompting
+├── data_validator/      # Schema validation and data cleaning
+├── dashboard/           # Visualization and analytics components
+├── db/                  # SQLite connection and CRUD operations
+├── interfaces/          # Data transfer objects and standard formats
+└── utils/               # Logging, file operations, helpers
 ```
 
 ### LLM Layer (Gemini 2.5 Flash)
 
-* Structured prompting
-* Temperature/stability settings optimized for legal text
-* Output schema checks and fallback repairs
-* Configurable extraction recipes
+* Structured prompting tailored for legal documents
+* Temperature and stability tuning for consistent results
+* Output schema validation and automatic error correction
+* Customizable extraction templates
 
 ### PDF Processor Layer
 
-* Robust text extraction pipeline
-* Automatic encoding normalization
-* Split + clean + merge strategy
-* OCR fallback for scanned documents
+* Robust text extraction handling various PDF encodings
+* OCR fallback to ensure text extraction from scanned images
+* Intelligent splitting, cleaning, and merging of content for LLM input
 
 ### Storage Layer
 
-* SQLite (local) with Indexed tables
-* Insert/update abstraction
-* Query helpers for dashboards
+* Local SQLite database with indexed tables
+* Insert/update abstractions for reliable persistence
+* Query helpers for dashboard filtering and reporting
 
 ---
 
@@ -100,7 +96,7 @@ streamlit_app.py         # Main UI / routing
 | Frontend UI   | Streamlit                        |
 | LLM           | **Gemini 2.5 Flash**             |
 | Data Storage  | SQLite                           |
-| PDF Parsing   | PyPDF + OCR                      |
+| PDF Parsing   | PyPDF + OCR (Tesseract)          |
 | Language      | Python                           |
 | Visualization | Streamlit charts (Altair/Pandas) |
 
@@ -123,7 +119,7 @@ pip install -r requirements.txt
 
 ### 3. Add your API key:
 
-Create `.env`:
+Create a `.env` file with:
 
 ```
 GEMINI_API_KEY=your_key_here
@@ -137,17 +133,17 @@ streamlit run streamlit_app.py
 
 ---
 
-## 🧠 How Extraction Works (High-Level)
+## 🧠 How Extraction Works (Overview)
 
-1. User uploads a PDF
-2. PDF is processed → text extracted + cleaned
-3. A structured prompt is generated
-4. **Gemini 2.5 Flash** receives the prompt and returns a JSON result
-5. Schema validator cleans fields
-6. Result + metadata is stored in SQLite
-7. UI renders preview + download options
+1. Upload a PDF document.
+2. PDF Processor extracts raw text, applies OCR if necessary, and cleans the content.
+3. Generate a structured prompt based on the cleaned text.
+4. Gemini 2.5 Flash processes the prompt, extracting relevant structured data as JSON.
+5. Validation layer cleans and normalizes extracted fields.
+6. Results and metadata are stored in SQLite.
+7. UI displays extraction preview with options to download or continue processing.
 
-Each step is fully modular and can be swapped or extended.
+Each component is modular and can be customized or replaced independently.
 
 ---
 
@@ -176,16 +172,16 @@ doc1.pdf,0001234-56.2023...,2023-02-27,"Aman; Haryana",Dispute regarding...
 
 ## 🏗️ Project Goals & Vision
 
-This project was built to demonstrate:
+Designed to demonstrate:
 
-* Real-world legal document extraction
-* Clean architecture for LLM systems
-* Practical integration of **Gemini 2.5 Flash**
-* UI/UX suitable for production
-* Modular extensibility (cloud DBs, new schemas, RAG layers)
+* Reliable and scalable legal document text extraction
+* Clean, maintainable architecture for combining PDF processing and LLMs
+* Practical integration of Gemini 2.5 Flash with a professional UI
+* Extensible foundation for advanced document intelligence workflows
 
-It can evolve into:
+Future directions include:
 
-* A full document intelligence platform
-* A corporate data ingestion pipeline
-* A SaaS product for legal firms
+* Expanding support for additional document types
+* Integration with cloud databases and storage
+* Enhancing extraction models and adding annotation interfaces
+* Developing SaaS solutions tailored to legal and corporate clients
